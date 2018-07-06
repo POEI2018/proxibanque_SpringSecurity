@@ -25,13 +25,6 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping("/dashboard/{id}")
-	public ModelAndView dashboard(@PathVariable("id") Integer clientId) {
-		final ModelAndView mav = new ModelAndView("dashboard");
-		mav.addObject("client", this.service.read(clientId));
-		return mav;
-	}
-
 	@PostMapping("/index")
 	public ModelAndView search(@RequestParam String keywords) {
 		final ModelAndView mav = new ModelAndView("index");
@@ -49,15 +42,16 @@ public class IndexController {
 	@PostMapping("/{id}/validate")
 	public ModelAndView validate(@PathVariable("id") Integer searchId,
 			@RequestParam("birthdate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate birthDate) {
+		final ModelAndView mav = new ModelAndView();
 		final Client client = this.service.validateClient(searchId, birthDate);
 		if (client != null) {
-			return new ModelAndView(
-					"redirect:/dashboard/" + client.getId() + ".html");
+			mav.setViewName("index");
+			mav.addObject("clientId", client.getId());
 		} else {
-			final ModelAndView mav = new ModelAndView("errors/generic");
+			mav.setViewName("errors/generic");
 			mav.addObject("message",
 					"Aucun résultat, veuillez vous adresser à un conseiller.");
-			return mav;
 		}
+		return mav;
 	}
 }
