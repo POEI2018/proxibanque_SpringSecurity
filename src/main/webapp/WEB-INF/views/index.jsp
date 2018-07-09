@@ -63,10 +63,12 @@
 						<li><a href="${rootUrl}/retrait/cartebleue.html">Retrait d'une CB</a></li>
 						<li><a href="${rootUrl}/retrait/chequier.html">Demande de chéquier</a></li>
 						<li><a href="${rootUrl}/virement/interne.html">Effectuer un virement</a></li>
+						<li><a href="${rootUrl}/compte/creation.html">Nouveau compte</a></li>
 					</ul>
 				</div>
 			</c:otherwise>
 		</c:choose>
 	</div>
+	<jsp:include page="templates/footer.jsp" />
 </body>
 </html>

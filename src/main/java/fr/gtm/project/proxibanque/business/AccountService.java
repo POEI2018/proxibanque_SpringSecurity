@@ -11,6 +11,9 @@ public class AccountService extends CrudService<Account> {
 	@Autowired
 	private WithdrawalComponent withdrawalComp;
 
+	@Autowired
+	private AccountComponent accountComp;
+
 	public Message transferInternal(Integer idAccount, Float amount) {
 		// TODO
 		return new Message("Virement effectué avec succès !");
@@ -32,5 +35,18 @@ public class AccountService extends CrudService<Account> {
 
 	public Message withdrawCheckBook(Integer idAccount) {
 		return this.withdrawalComp.processCheckBook(this.read(idAccount));
+	}
+
+	public Message create(Float balance, String label, String number) {
+		final Account account = new Account();
+		account.setBalance(balance);
+		account.setLabel(label);
+		account.setNumber(number);
+		final Message result = this.accountComp
+				.validateAccountCreation(account);
+		if (!result.isError()) {
+			this.create(account);
+		}
+		return result;
 	}
 }

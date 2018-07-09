@@ -31,5 +31,6 @@
 			<div class="alert alert-success" role="alert">${result.content}</div>
 		</c:if>
 	</div>
+	<jsp:include page="../templates/footer.jsp" />
 </body>
 </html>

@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h2>Effectuer une opération de retrait de carte bleue :</h2>
+	<jsp:include page="../templates/footer.jsp" />
 </body>
 </html>

@@ -29,5 +29,6 @@
 			<button class="btn btn-primary btn-lg">Valider</button>
 		</form>
 	</div>
+	<jsp:include page="templates/footer.jsp" />
 </body>
 </html>
