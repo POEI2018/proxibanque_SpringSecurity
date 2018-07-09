@@ -17,7 +17,13 @@ public class AccountService extends CrudService<Account> {
 	}
 
 	public Message withdrawCash(Integer idAccount, Float amount) {
-		return this.withdrawalComp.processCash(this.read(idAccount), amount);
+		final Account account = this.read(idAccount);
+		final Message result = this.withdrawalComp.processCash(account, amount);
+		if (!result.isError()) {
+			account.setBalance(account.getBalance() - amount);
+			this.edit(account);
+		}
+		return result;
 	}
 
 	public Message withdrawBankCard(Integer idAccount, TYPE_CARD type) {
