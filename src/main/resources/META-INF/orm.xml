@@ -58,14 +58,17 @@
 				<generated-value strategy="IDENTITY" />
 			</id>
 			<basic name="number" />
-			<basic name="type" />
+			<basic name="balance" />
+			<basic name="type">
+				<enumerated>STRING</enumerated>
+			</basic>
 			<basic name="label" />
 			<basic name="openedOn" />
 			<one-to-one name="checkBook">
-				<join-column name="checkbook_ref" referenced-column-name="id" />
+				<join-column name="checkbook_ref" referenced-column-name="checkbook_id" />
 			</one-to-one>
 			<one-to-one name="bankCard">
-				<join-column name="bankcard_ref" referenced-column-name="id" />
+				<join-column name="bankcard_ref" referenced-column-name="bankcard_id" />
 			</one-to-one>
 		</attributes>
 	</entity>
@@ -81,11 +84,11 @@
 			<basic name="lastname" />
 			<basic name="firstname" />
 			<basic name="birthDate" />
-			<one-to-many name="accounts">
-				<join-column name="client_ref" referenced-column-name="id" />
+			<one-to-many name="accounts" fetch="EAGER">
+				<join-column name="client_ref" referenced-column-name="client_id" />
 			</one-to-many>
-			<one-to-one name="adresse">
-				<join-column name="adresse_ref" referenced-column-name="id" />
+			<one-to-one name="address">
+				<join-column name="address_ref" referenced-column-name="address_id" />
 			</one-to-one>
 		</attributes>
 	</entity>

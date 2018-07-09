@@ -6,10 +6,13 @@ public class Account implements Entity {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
+	private Float balance;
 	private String type;
 	private String number;
 	private String label;
 	private LocalDate openedOn;
+	private BankCard bankCard;
+	private CheckBook checkBook;
 
 	public Integer getId() {
 		return id;
@@ -19,12 +22,20 @@ public class Account implements Entity {
 		this.id = id;
 	}
 
-	public String getType() {
-		return type;
+	public Float getBalance() {
+		return balance;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setBalance(Float balance) {
+		this.balance = balance;
+	}
+
+	public TYPE_COMPTE getType() {
+		return TYPE_COMPTE.valueOf(this.type);
+	}
+
+	public void setType(TYPE_COMPTE type) {
+		this.type = type.name();
 	}
 
 	public String getNumber() {
@@ -49,6 +60,22 @@ public class Account implements Entity {
 
 	public void setOpenedOn(LocalDate openedOn) {
 		this.openedOn = openedOn;
+	}
+
+	public BankCard getBankCard() {
+		return bankCard;
+	}
+
+	public void setBankCard(BankCard bankCard) {
+		this.bankCard = bankCard;
+	}
+
+	public CheckBook getCheckBook() {
+		return checkBook;
+	}
+
+	public void setCheckBook(CheckBook checkBook) {
+		this.checkBook = checkBook;
 	}
 
 }

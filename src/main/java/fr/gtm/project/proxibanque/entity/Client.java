@@ -1,6 +1,7 @@
 package fr.gtm.project.proxibanque.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Client implements Entity {
 	private static final long serialVersionUID = 1L;
@@ -10,6 +11,8 @@ public class Client implements Entity {
 	private String firstname;
 	private LocalDate birthDate;
 	private String number;
+	private List<Account> accounts;
+	private Address address;
 
 	public Integer getId() {
 		return id;
@@ -74,6 +77,22 @@ public class Client implements Entity {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 }
