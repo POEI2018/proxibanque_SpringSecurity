@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.gtm.project.proxibanque.business.ClientService;
@@ -23,6 +24,12 @@ public class IndexController {
 	@RequestMapping("/index")
 	public String index() {
 		return "index";
+	}
+
+	@RequestMapping("/disconnect")
+	public String disconnectClient(SessionStatus status) {
+		status.setComplete();
+		return "redirect:/";
 	}
 
 	@PostMapping("/index")

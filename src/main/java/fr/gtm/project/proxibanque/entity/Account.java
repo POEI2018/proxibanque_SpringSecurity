@@ -13,6 +13,7 @@ public class Account implements Entity {
 	private LocalDate openedOn;
 	private BankCard bankCard;
 	private CheckBook checkBook;
+	private Client client;
 
 	public Integer getId() {
 		return id;
@@ -76,6 +77,14 @@ public class Account implements Entity {
 
 	public void setCheckBook(CheckBook checkBook) {
 		this.checkBook = checkBook;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 }

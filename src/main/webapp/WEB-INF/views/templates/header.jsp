@@ -11,3 +11,7 @@
 
 <link rel="stylesheet" href="${cssUrl}/bootstrap.min.css">
 <link rel="stylesheet" href="${cssUrl}/stepbystep-form.css">
+
+<c:if test="${ not empty client }">
+	<title>${client.firstname} ${client.lastname}</title>
+</c:if>

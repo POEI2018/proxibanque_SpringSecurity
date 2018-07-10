@@ -17,15 +17,16 @@
 					</c:if>
 					<div class="form-group">
 						<label for="balance">Solde de départ</label>
-						<input id="balance" name="balance" type="number" step="0.05" min="0" />
+						<input id="balance" name="balance" class="form-control"
+							type="number" step="0.05" min="0" />
 					</div>
 					<div class="form-group">
 						<label for="label">Libellé</label>
-						<input id="label" name="label" maxlength="255" />
+						<input id="label" name="label" maxlength="255" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label for="number">Numéro</label>
-						<input id="number" name="number" type="number" />
+						<input id="number" name="number" type="number" class="form-control" />
 					</div>
 					<button class="btn btn-primary btn-lg">Valider</button>
 				</form>

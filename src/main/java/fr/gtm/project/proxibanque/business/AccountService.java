@@ -1,10 +1,14 @@
 package fr.gtm.project.proxibanque.business;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.gtm.project.proxibanque.entity.Account;
+import fr.gtm.project.proxibanque.entity.Client;
 import fr.gtm.project.proxibanque.entity.Message;
 import fr.gtm.project.proxibanque.entity.TYPE_CARD;
+import fr.gtm.project.proxibanque.entity.TYPE_COMPTE;
 
 public class AccountService extends CrudService<Account> {
 
@@ -37,14 +41,18 @@ public class AccountService extends CrudService<Account> {
 		return this.withdrawalComp.processCheckBook(this.read(idAccount));
 	}
 
-	public Message create(Float balance, String label, String number) {
+	public Message create(Float balance, String label, String number,
+			Client client) {
 		final Account account = new Account();
 		account.setBalance(balance);
 		account.setLabel(label);
 		account.setNumber(number);
+		account.setType(TYPE_COMPTE.MAIN);
+		account.setOpenedOn(LocalDate.now());
 		final Message result = this.accountComp
 				.validateAccountCreation(account);
 		if (!result.isError()) {
+			account.setClient(client);
 			this.create(account);
 		}
 		return result;

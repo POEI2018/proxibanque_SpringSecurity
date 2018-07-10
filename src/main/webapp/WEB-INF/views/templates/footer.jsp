@@ -3,5 +3,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="navbar navbar-light bg-dark fixed-bottom">
-	<h3><a href="<c:url value="/" />">Retour à l'accueil</a></h3>
+	<h3><a href="<c:url value="/disconnect.html" />">Retour à l'accueil</a></h3>
 </div>
