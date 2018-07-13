@@ -10,8 +10,20 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
 		http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/orm_2_0.xsd">
 
+	<entity class="fr.gtm.project.proxibanque.entity.Advisor">
+		<attributes>
+			<id name="id">
+				<column name="bankcard_id" />
+				<generated-value strategy="IDENTITY" />
+			</id>
+			<basic name="login" />
+			<basic name="password" />
+
+		</attributes>
+	</entity>
+
 	<entity class="fr.gtm.project.proxibanque.entity.BankCard">
-		<table name="bankcard" />	
+		<table name="bankcard" />
 		<attributes>
 			<id name="id">
 				<column name="bankcard_id" />
@@ -22,9 +34,9 @@
 			<basic name="expiredOn" />
 		</attributes>
 	</entity>
-	
+
 	<entity class="fr.gtm.project.proxibanque.entity.CheckBook">
-		<table name="checkbook" />	
+		<table name="checkbook" />
 		<attributes>
 			<id name="id">
 				<column name="checkbook_id" />
@@ -34,7 +46,7 @@
 			<basic name="sendOn" />
 		</attributes>
 	</entity>
-	
+
 	<entity class="fr.gtm.project.proxibanque.entity.Address">
 		<table name="address" />
 		<attributes>
@@ -49,7 +61,7 @@
 			<basic name="optionalLine" />
 		</attributes>
 	</entity>
-	
+
 	<entity class="fr.gtm.project.proxibanque.entity.Account">
 		<table name="account" />
 		<attributes>
@@ -65,19 +77,22 @@
 			<basic name="label" />
 			<basic name="openedOn" />
 			<many-to-one name="client">
-				<join-column name="client_ref" referenced-column-name="client_id" />
+				<join-column name="client_ref"
+					referenced-column-name="client_id" />
 			</many-to-one>
 			<one-to-one name="checkBook">
-				<join-column name="checkbook_ref" referenced-column-name="checkbook_id" />
+				<join-column name="checkbook_ref"
+					referenced-column-name="checkbook_id" />
 			</one-to-one>
 			<one-to-one name="bankCard">
-				<join-column name="bankcard_ref" referenced-column-name="bankcard_id" />
+				<join-column name="bankcard_ref"
+					referenced-column-name="bankcard_id" />
 			</one-to-one>
 		</attributes>
 	</entity>
-	
+
 	<entity class="fr.gtm.project.proxibanque.entity.Client">
-		<table name="client" />	
+		<table name="client" />
 		<attributes>
 			<id name="id">
 				<column name="client_id" />
@@ -87,9 +102,11 @@
 			<basic name="lastname" />
 			<basic name="firstname" />
 			<basic name="birthDate" />
-			<one-to-many name="accounts" mapped-by="client" fetch="EAGER" />
+			<one-to-many name="accounts" mapped-by="client"
+				fetch="EAGER" />
 			<one-to-one name="address">
-				<join-column name="address_ref" referenced-column-name="address_id" />
+				<join-column name="address_ref"
+					referenced-column-name="address_id" />
 			</one-to-one>
 		</attributes>
 	</entity>
